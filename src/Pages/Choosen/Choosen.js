@@ -26,6 +26,11 @@ const Choosen = () => {
                         <h4 className="font-semibold text-blue-7 text-lg capitalize">affordability</h4>
                         <p className='text-sm'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda consectetur necessitatibus quod.</p>
                     </div>
+                    <div className="border bg-sky-50 p-4">
+                        <span className='tealish-blue-bg text-white rounded-full py-4 px-5 mb-2 inline-block'>05</span>
+                        <h4 className="font-semibold text-blue-7 text-lg capitalize">modern opthtalmology</h4>
+                        <p className='text-sm'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda consectetur necessitatibus quod.</p>
+                    </div>
                     <div className="border tealish-blue-bg p-5">
                         <p className='text-4xl font-semibold text-white capitalize'>taking good care of your eyes</p>
                     </div>

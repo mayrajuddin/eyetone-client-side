@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../../AuthContext/AuthProvider';
 import './Header.css'
-
+import logo from '../../../a.png'
 const Header = () => {
     const { user, logOut } = useContext(authContext)
     const handleLogOut = () => {
@@ -22,7 +22,8 @@ const Header = () => {
                             <li className='text-white capitalize'><Link to='/blog'>blog</Link></li>
                         </ul>
                     </div>
-                    <Link to='/' className="normal-case text-2xl font">Eyetone</Link>
+                    <img src={logo} alt="" className='h-8' />
+                    <Link to='/' className="normal-case ml-2 text-2xl font">Eyetone</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
