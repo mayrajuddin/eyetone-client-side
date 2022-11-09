@@ -17,8 +17,9 @@ const Services = () => {
                                 </div>
                                 <img src={service.img} alt="" />
                                 <p className='p-2'>{service?.title?.slice(0, 60) + '...'}</p>
-                                <div className='p-2'>
-                                    <Link to={`/service-details/${service._id}`} className='ml-3 tealish-blue-font font-semibold  font-lg capitalize '>see more </Link><FaLongArrowAltRight className='inline ml-3 tealish-blue-font' />
+                                <div className='p-2 flex items-center justify-around'>
+                                    <span className=' font-bold text-lg'> {service.price} TK </span>
+                                    <Link to={`/service-details/${service._id}`} className=' ml-3 tealish-blue-font font-semibold  font-lg capitalize '>see more <FaLongArrowAltRight className='inline ml-3 tealish-blue-font' /></Link>
                                 </div>
                             </div>
                         ))
