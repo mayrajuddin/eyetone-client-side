@@ -1,9 +1,20 @@
-import React, { } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaLongArrowAltRight, } from "react-icons/fa";
+import Loader from '../Shared/Loader/Loader';
 
 const Services = () => {
     const services = useLoaderData()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 500)
+    }, [])
+    if (loading) {
+        return <Loader></Loader>
+    }
     return (
         <div className='my-8'>
             <div className="container mx-auto">

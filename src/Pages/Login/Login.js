@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthContext/AuthProvider';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { loginUser } = useContext(authContext)
@@ -22,11 +23,12 @@ const Login = () => {
             }).catch(err => console.error(err))
     }
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200 py-7">
             <div className="container mx-auto">
-                <div className="hero-content flex-col lg:flex-row gap-8">
+                <div className="hero-content">
                     <form onSubmit={handleLogin} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
+                            <h1 className="text-4xl font-bold text-center">Login now!</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -43,14 +45,12 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn tealish-blue-bg hover:bg-blue-800 bprder-0">Login</button>
                             </div>
+                            <SocialLogin></SocialLogin>
+                            <p className="text-md pt-3 text-center capitalize">don't have account ? <Link to='/register' className='tealish-blue-font font-semibold'>register</Link></p>
                         </div>
                     </form>
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    </div>
                 </div>
             </div>
         </div>

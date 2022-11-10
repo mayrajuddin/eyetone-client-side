@@ -5,10 +5,6 @@ import './Header.css'
 import logo from '../../../a.png'
 const Header = () => {
     const { user, logOut } = useContext(authContext)
-    const handleLogOut = () => {
-        logOut()
-            .then(result => { }).catch(err => console.error(err))
-    }
     return (
         <div className="navbar tealish-blue-bg">
             <div className="container mx-auto">
@@ -22,19 +18,31 @@ const Header = () => {
                             <li className='text-white capitalize'><Link to='/blog'>blog</Link></li>
                         </ul>
                     </div>
-                    <img src={logo} alt="" className='h-8' />
+                    <img src={logo} alt="" className='h-10' />
                     <Link to='/' className="normal-case ml-2 text-2xl font">Eyetone</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                        <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-xl'><Link to='/'>Home</Link></li>
-                        <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-xl'><Link to='/blog'>blog</Link></li>
-                        <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-xl'><Link to='/services'>Services</Link></li>
+                        {user?.uid ?
+                            <>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/'>Home</Link></li>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/blog'>blog</Link></li>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/services'>Services</Link></li>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/addservice'>add Services</Link></li>
+                            </> :
+                            <>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/'>Home</Link></li>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/blog'>blog</Link></li>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/services'>Services</Link></li>
+                            </>
+                        }
                     </ul>
                 </div>
-                {user ? <span className='text-white'>{user?.email}</span> : <span className="hidden">none</span>}
                 <div className="navbar justify-end ">
-                    {user ? <button onClick={handleLogOut} type="button" className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7'>Log out</button> :
+                    {user ? <>
+                        <button onClick={logOut} type="button" className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7'>Log out</button>
+                        <img src={user.photoURL} alt="" className='h-9 rounded-full' />
+                    </> :
                         <><Link to='/login' className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7 mr-2'>Login</Link>
                             <Link to='/register' className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7'>Register</Link>
                         </>
