@@ -39,9 +39,8 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar justify-end ">
-                    {user ? <>
+                    {user?.email ? <>
                         <button onClick={logOut} type="button" className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7'>Log out</button>
-                        <img src={user.photoURL} alt="" className='h-9 rounded-full' />
                     </> :
                         <><Link to='/login' className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7 mr-2'>Login</Link>
                             <Link to='/register' className='btn bg-blue-800 border-0 hover:bg-blue-700 px-7'>Register</Link>

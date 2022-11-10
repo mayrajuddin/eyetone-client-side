@@ -19,7 +19,7 @@ const Services = () => {
         <div className='my-8'>
             <div className="container mx-auto">
                 <h3 className="font text-3xl capitalize pb-7 font-semibold">eye care services  </h3>
-                <div className="grid md:grid-cols-3 gap-x-4">
+                <div className="grid md:grid-cols-3 gap-5">
                     {
                         services.map(service => (
                             <div className="card bg-sky-50 shadow-xl pb-3 rounded-lg" key={service._id}>

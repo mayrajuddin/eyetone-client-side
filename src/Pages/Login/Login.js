@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthContext/AuthProvider';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { loginUser } = useContext(authContext)
+    const [error, setError] = useState()
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -18,9 +19,12 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
+                setError('')
                 navigate(from, { replace: true })
                 form.reset()
-            }).catch(err => console.error(err))
+            }).catch(err => {
+                setError(err.message)
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200 py-7">
@@ -41,7 +45,7 @@ const Login = () => {
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                                    <p className='text-warning mt-2 text-capitalize text-sm'>{error}</p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">

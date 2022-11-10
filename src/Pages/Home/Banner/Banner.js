@@ -13,7 +13,7 @@ const Banner = () => {
                     <div className='hidden md:block' >
                         <div className="relative rounded-lg">
                             <img className='h-72 w-80 my-9 rounded-xl' src='https://img.freepik.com/free-photo/eye-doctor-with-female-patient-during-examination-modern-clinic-ophthalmologist-is-using-special-medical-equipment-eye-health_657921-165.jpg?w=2000' alt="" />
-                            <img className='absolute -top-9 right-4 rounded-full h-72  w-60  rounded-lg' src="https://images.unsplash.com/photo-1663151064065-cb334788f77d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
+                            <img className='absolute -top-9 left-1/3 rounded-full h-72  w-60  rounded-lg' src="https://images.unsplash.com/photo-1663151064065-cb334788f77d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
                         </div>
                     </div>
                 </div>

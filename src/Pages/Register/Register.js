@@ -4,7 +4,7 @@ import { authContext } from '../../AuthContext/AuthProvider';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Register = () => {
-    const { createUser } = useContext(authContext)
+    const { createUser, updateInfo } = useContext(authContext)
 
     const navigate = useNavigate()
 
@@ -14,9 +14,12 @@ const Register = () => {
         const name = form.name.value
         const email = form.email.value
         const password = form.password.value
-        console.log(name, email, password);
+        const info = {
+            displayName: name
+        }
         createUser(email, password)
             .then(result => {
+                updateInfo(info)
                 navigate('/')
                 form.reset()
             }).catch(err => console.error(err))
