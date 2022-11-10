@@ -14,8 +14,20 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 tealish-blue-bg shadow rounded-box w-52">
-                            <li className='text-white capitalize'><Link to='/'>Home</Link></li>
-                            <li className='text-white capitalize'><Link to='/blog'>blog</Link></li>
+                            {user?.uid ?
+                                <>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/'>Home</Link></li>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/blog'>blog</Link></li>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/services'>Services</Link></li>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/addservice'>add Services</Link></li>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/reviews'>review</Link></li>
+                                </> :
+                                <>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/'>Home</Link></li>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/blog'>blog</Link></li>
+                                    <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/services'>Services</Link></li>
+                                </>
+                            }
                         </ul>
                     </div>
                     <img src={logo} alt="" className='h-10' />
@@ -29,6 +41,7 @@ const Header = () => {
                                 <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/blog'>blog</Link></li>
                                 <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/services'>Services</Link></li>
                                 <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/addservice'>add Services</Link></li>
+                                <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/reviews'>review</Link></li>
                             </> :
                             <>
                                 <li className='text-white hover:bg-blue-700 rounded mr-2 capitalize text-md'><Link to='/'>Home</Link></li>
