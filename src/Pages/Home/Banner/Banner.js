@@ -11,9 +11,9 @@ const Banner = () => {
                         <Link to='/services' className='btn tealish-blue-bg border-0 hover:bg-blue-700 px-7 mt-4'>services</Link>
                     </div>
                     <div className='hidden md:block' >
-                        <div className="relative z-10">
-                            <img className='h-72 w-80 py-9 rounded-lg' src='https://img.freepik.com/free-photo/eye-doctor-with-female-patient-during-examination-modern-clinic-ophthalmologist-is-using-special-medical-equipment-eye-health_657921-165.jpg?w=2000' alt="" />
-                            <img className='absolute top-9 right-3 -z-[1] h-80  w-72 py-9 rounded-lg' src="https://images.unsplash.com/photo-1663151064065-cb334788f77d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
+                        <div className="relative rounded-lg">
+                            <img className='h-72 w-80 my-9 rounded-xl' src='https://img.freepik.com/free-photo/eye-doctor-with-female-patient-during-examination-modern-clinic-ophthalmologist-is-using-special-medical-equipment-eye-health_657921-165.jpg?w=2000' alt="" />
+                            <img className='absolute -top-9 right-4 rounded-full h-72  w-60  rounded-lg' src="https://images.unsplash.com/photo-1663151064065-cb334788f77d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="" />
                         </div>
                     </div>
                 </div>

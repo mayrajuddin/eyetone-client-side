@@ -4,7 +4,7 @@ const Choosen = () => {
     return (
         <div>
             <div className="container mx-auto">
-                <h2 className="font-bold text-3xl py-3 text-blue-800 capitalize "> why peple choose <br /> <span className='tealish-blue-font'>eyetone</span></h2>
+                <h2 className="font-bold text-3xl py-3 text-blue-800 capitalize text-center md:text-start"> why peple choose <br /> <span className='tealish-blue-font'>eyetone</span></h2>
                 <div className="grid md:grid-cols-3 gap-4 my-5">
                     <div className="border bg-sky-50 p-4">
                         <span className='tealish-blue-bg text-white rounded-full py-4 px-5 mb-2 inline-block'>01</span>
