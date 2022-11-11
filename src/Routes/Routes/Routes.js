@@ -28,12 +28,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch(`${process.env.REACT_APP_API_URI}/services`)
             },
             {
                 path: '/service-details/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URI}/services/${params.id}`)
             },
             {
                 path: '/addservice',
@@ -42,12 +42,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/reviews',
                 element: <PrivateRoute><Reviews></Reviews></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch(`${process.env.REACT_APP_API_URI}/services`)
             },
             {
                 path: '/update/:id',
                 element: <UpdateReview></UpdateReview>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URI}/reviews/${params.id}`)
             },
             {
                 path: '/login',

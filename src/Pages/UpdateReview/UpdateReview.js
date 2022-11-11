@@ -14,7 +14,7 @@ const UpdateReview = () => {
         const value = {
             ratings, message
         }
-        fetch(`http://localhost:5000/reviews/${review._id}`, {
+        fetch(`${process.env.REACT_APP_API_URI}/reviews/${review._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

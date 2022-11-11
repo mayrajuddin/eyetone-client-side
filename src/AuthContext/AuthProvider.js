@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
 
     // get token 
     const getToken = async (email) => {
-        const res = await fetch('http://localhost:5000/create-token', {
+        const res = await fetch(`${process.env.REACT_APP_API_URI}/create-token`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -15,7 +15,7 @@ const AddComments = ({ serviceName }) => {
         const value = {
             name, email, ratings, message, serviceName
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch(`${process.env.REACT_APP_API_URI}/reviews`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

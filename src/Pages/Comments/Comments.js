@@ -6,7 +6,7 @@ const Comments = () => {
     const { user } = useContext(authContext)
     const [comments, setComments] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`${process.env.REACT_APP_API_URI}/reviews`)
             .then(res => res.json())
             .then(data => setComments(data))
     }, [])

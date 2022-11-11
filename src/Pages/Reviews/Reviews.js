@@ -11,7 +11,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`${process.env.REACT_APP_API_URI}/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -22,7 +22,7 @@ const Reviews = () => {
         const procced = window.confirm('are you sure ?')
 
         if (procced) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`${process.env.REACT_APP_API_URI}/reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',

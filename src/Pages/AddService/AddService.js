@@ -9,7 +9,7 @@ const AddService = () => {
         e.preventDefault()
         const form = e.target
 
-        fetch('http://localhost:5000/services', {
+        fetch(`${process.env.REACT_APP_API_URI}/services`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

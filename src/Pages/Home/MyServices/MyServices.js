@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MyServices = () => {
     const [items, setItems] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/services/?limit=3')
+        fetch(`${process.env.REACT_APP_API_URI}/services/?limit=3`)
             .then(res => res.json())
             .then(data => {
                 setItems(data)
