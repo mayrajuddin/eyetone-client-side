@@ -7,7 +7,7 @@ import NoData from '../NoDataFound/NoData';
 import Loader from '../Shared/Loader/Loader';
 
 const Reviews = () => {
-    const { user } = useContext(authContext)
+    const { user, token } = useContext(authContext)
     const [reviews, setReviews] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
@@ -23,7 +23,11 @@ const Reviews = () => {
 
         if (procced) {
             fetch(`http://localhost:5000/reviews/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer ' + token
+                }
             })
                 .then(res => res.json())
                 .then(data => {

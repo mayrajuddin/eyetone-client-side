@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { authContext } from '../../AuthContext/AuthProvider';
 
 const AddComments = ({ serviceName }) => {
-    const { user } = useContext(authContext)
+    const { user, token } = useContext(authContext)
     const handleComments = e => {
         e.preventDefault()
         const form = e.target
@@ -18,7 +18,8 @@ const AddComments = ({ serviceName }) => {
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                Authorization: 'Bearer ' + token
             },
             body: JSON.stringify(value)
         }).then(res => res.json())

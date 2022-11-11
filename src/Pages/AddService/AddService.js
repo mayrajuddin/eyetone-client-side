@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { authContext } from '../../AuthContext/AuthProvider';
 
 const AddService = () => {
+    const { token } = useContext(authContext)
     const [item, setItem] = useState({})
     const addService = e => {
         e.preventDefault()
@@ -10,7 +12,8 @@ const AddService = () => {
         fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                Authorization: 'Bearer ' + token
             },
             body: JSON.stringify(item)
         })

@@ -1,8 +1,10 @@
-import React, { } from 'react';
+import React, { useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
+import { authContext } from '../../AuthContext/AuthProvider';
 
 const UpdateReview = () => {
+    const { token } = useContext(authContext)
     const review = useLoaderData()
     const updateComments = e => {
         e.preventDefault()
@@ -15,7 +17,8 @@ const UpdateReview = () => {
         fetch(`http://localhost:5000/reviews/${review._id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                Authorization: 'Bearer ' + token
             },
             body: JSON.stringify(value)
         }).then(res => res.json())
