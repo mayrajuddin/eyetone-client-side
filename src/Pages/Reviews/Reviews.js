@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaStar, } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useFetcher } from 'react-router-dom';
 import { authContext } from '../../AuthContext/AuthProvider';
 
 const Reviews = () => {
     const { user } = useContext(authContext)
     const [reviews, setReviews] = useState([])
+
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user.email}`)
             .then(res => res.json())
@@ -13,6 +14,26 @@ const Reviews = () => {
                 setReviews(data)
             })
     }, [user?.email])
+
+    const handleDelete = id => {
+        const procced = window.confirm('are you sure ?')
+        if (procced) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('success')
+                        const remaining = reviews.filter(com => com._id !== id)
+                        setReviews(remaining)
+                    }
+                })
+        }
+    }
+
+    if (reviews.length === 0) return <h1>Empty</h1>
+
     return (
         <div>
             <div className="container mx-auto">
@@ -42,7 +63,7 @@ const Reviews = () => {
                                     <p className='p-4'>{review.message}</p>
                                     <div className='text-center text-xl mt-4'>
                                         <Link to={`/update/${review._id}`} className="btn bg-blue-800 border-0 hover:bg-blue-700 px-7 mr-3 capitalize">edit</Link>
-                                        <button className="btn bg-blue-800 border-0 hover:bg-blue-700 px-6 capitalize">delete</button>
+                                        <button onClick={() => handleDelete(review._id)} className="btn bg-blue-800 border-0 hover:bg-blue-700 px-6 capitalize">delete</button>
                                     </div>
                                 </div>
                             </div>
