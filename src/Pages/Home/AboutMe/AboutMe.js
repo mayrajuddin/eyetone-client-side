@@ -1,4 +1,5 @@
 import React from 'react';
+import Page from '../../../components/Page';
 import doctorImg from '../../../images/doctor-avater.jpg'
 const AboutMe = () => {
     return (

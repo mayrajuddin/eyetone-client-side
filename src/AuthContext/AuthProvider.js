@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(email)
+            body: JSON.stringify({ email })
         })
 
         return await res.json();
@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const loginUser = async (email, password) => {
-        const token = await getToken()
+        const token = await getToken(email)
 
         setLocalStorage('token', token.token)
         setToken(token.token)
@@ -37,11 +37,20 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = () => {
+        localStorage.clear('token')
         return signOut(auth)
     }
-    const googleLogin = () => {
+    const googleLogin = async () => {
+
         setLoading(true)
-        return signInWithPopup(auth, googleProvider)
+        const data = await signInWithPopup(auth, googleProvider)
+        console.log(data.user.email)
+        if (data) {
+            const token = await getToken(data.user.email)
+
+            setLocalStorage('token', token.token)
+            setToken(token.token)
+        }
     }
     const updateInfo = (obj) => {
         return updateProfile(auth.currentUser, obj)

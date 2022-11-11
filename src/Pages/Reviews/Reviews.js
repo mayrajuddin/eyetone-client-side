@@ -3,6 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { FaStar, } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthContext/AuthProvider';
+import Page from '../../components/Page';
 import NoData from '../NoDataFound/NoData';
 import Loader from '../Shared/Loader/Loader';
 
@@ -48,7 +49,7 @@ const Reviews = () => {
     if (reviews.length === 0) return <NoData></NoData>
 
     return (
-        <div>
+        <Page title="Reviews">
             <Toaster
                 position="top-center"
                 reverseOrder={false}
@@ -88,7 +89,7 @@ const Reviews = () => {
                     }
                 </div>
             </div>
-        </div>
+        </Page>
     );
 };
 
