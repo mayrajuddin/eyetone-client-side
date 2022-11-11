@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddService = () => {
     const [item, setItem] = useState({})
     const addService = e => {
         e.preventDefault()
         const form = e.target
-        console.log(item);
+
         fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(item)
-        }).then(res => res.json())
+        })
+            .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    toast.success('Sevice Add Successfull')
                     form.reset()
                 }
             })
@@ -28,6 +31,10 @@ const AddService = () => {
     }
     return (
         <div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="container mx-auto">
                 <h2 className='text-2xl text-center font-bold capitalize py-5'>add Service</h2>
                 <form onSubmit={addService} className="">

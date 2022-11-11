@@ -1,7 +1,8 @@
 import React, { useContext, } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { authContext } from '../../AuthContext/AuthProvider';
 
-const AddComments = () => {
+const AddComments = ({ serviceName }) => {
     const { user } = useContext(authContext)
     const handleComments = e => {
         e.preventDefault()
@@ -12,9 +13,8 @@ const AddComments = () => {
         const message = form.message.value
 
         const value = {
-            name, email, ratings, message
+            name, email, ratings, message, serviceName
         }
-        console.log(value);
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
@@ -24,14 +24,19 @@ const AddComments = () => {
         }).then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    toast.success('Comments Added Successfully !')
                     form.reset()
-                    console.log(data);
                 }
             })
 
     }
+
     return (
         <div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="container mx-auto">
                 <h2 className='text-2xl text-center font-bold capitalize '>leave your comments</h2>
                 <div className="divider"></div>

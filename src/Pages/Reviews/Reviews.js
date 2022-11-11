@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { FaStar, } from 'react-icons/fa';
-import { Link, useFetcher } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthContext/AuthProvider';
+import NoData from '../NoDataFound/NoData';
+import Loader from '../Shared/Loader/Loader';
 
 const Reviews = () => {
     const { user } = useContext(authContext)
     const [reviews, setReviews] = useState([])
-
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -17,6 +20,7 @@ const Reviews = () => {
 
     const handleDelete = id => {
         const procced = window.confirm('are you sure ?')
+
         if (procced) {
             fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE'
@@ -24,18 +28,27 @@ const Reviews = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('success')
+                        toast.success('Successfully Deleted !')
                         const remaining = reviews.filter(com => com._id !== id)
                         setReviews(remaining)
                     }
                 })
         }
     }
-
-    if (reviews.length === 0) return <h1>Empty</h1>
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 500)
+    }, [])
+    if (loading) return <Loader></Loader>
+    if (reviews.length === 0) return <NoData></NoData>
 
     return (
         <div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="container mx-auto">
                 <h4 className="text-2xl text-center font-bold capitalize py-5">my reviews </h4>
                 <div className="grid md:grid-cols-4 gap-4 my-4">
@@ -57,7 +70,7 @@ const Reviews = () => {
                                     </div>
                                 </div>
                                 <div className=" text-sm ">
-                                    <p className='p-4 capitalize'>service names</p>
+                                    <p className='p-4 capitalize'>{review.serviceName}</p>
                                 </div>
                                 <div className="text-sm ">
                                     <p className='p-4'>{review.message}</p>
